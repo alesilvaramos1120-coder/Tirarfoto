@@ -1,0 +1,2 @@
+# Tirarfoto
+Foto
