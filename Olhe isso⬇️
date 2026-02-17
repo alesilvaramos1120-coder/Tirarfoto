@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Capturar Foto</title>
+</head>
+<body>
+
+<h2>Tirar Foto</h2>
+<button onclick="startCamera()">Abrir Câmera</button>
+<br><br>
+<video id="video" width="300" autoplay></video>
+<br>
+<button onclick="takePhoto()">Tirar Foto</button>
+<br><br>
+<canvas id="canvas" width="300"></canvas>
+
+<script>
+let video = document.getElementById("video");
+
+function startCamera() {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      video.srcObject = stream;
+    })
+    .catch(error => {
+      alert("Permissão negada ou erro ao acessar câmera.");
+    });
+}
+
+function takePhoto() {
+  let canvas = document.getElementById("canvas");
+  let context = canvas.getContext("2d");
+  context.drawImage(video, 0, 0, 300, 225);
+}
+</script>
+
+</body>
+</html>
